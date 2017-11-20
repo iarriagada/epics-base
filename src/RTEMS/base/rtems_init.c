@@ -432,6 +432,22 @@ static void nfsMountCallFunc(const iocshArgBuf *args)
 }
 #endif
 
+void zoneset(const char *zone)
+{
+    if(zone)
+        setenv("TZ", zone, 1);
+    else
+        unsetenv("TZ");
+    tzset();
+}
+
+static const iocshArg zonesetArg0 = {"one string", iocshArgString};
+static const iocshArg * const zonesetArgs[1] = {&zonesetArg0};
+static const iocshFuncDef zonesetFuncDef = {"zoneset",1,zonesetArgs};
+static void zonesetCallFunc(const iocshArgBuf *args)
+{
+    zoneset(args[0].sval);
+}
 /*
  * Register RTEMS-specific commands
  */
@@ -442,6 +458,7 @@ static void iocshRegisterRTEMS (void)
 #ifndef OMIT_NFS_SUPPORT
     iocshRegister(&nfsMountFuncDef, nfsMountCallFunc);
 #endif
+    iocshRegister(&zonesetFuncDef, &zonesetCallFunc);
 }
 
 /*
