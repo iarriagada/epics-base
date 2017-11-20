@@ -112,7 +112,7 @@
 # configure/os/CONFIG_SITE.<host>.Common files will
 # override 
 #
-CROSS_COMPILER_TARGET_ARCHS=
+CROSS_COMPILER_TARGET_ARCHS = RTEMS-beatnik RTEMS-mvme2307 RTEMS-mvme3100 
 #CROSS_COMPILER_TARGET_ARCHS=vxWorks-ppc32
 
 #  If only a subset of the host architectures perform
