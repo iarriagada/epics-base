@@ -184,7 +184,7 @@ COMPAT_313=NO
 # If you don't want to install into $(TOP) dir then
 # define INSTALL_LOCATION here
 # UNDEFINED NOW... Set for testing into TOP
-# INSTALL_LOCATION=/gem_sw/epics/R3.14.12.6/base
+INSTALL_LOCATION=/home/mrippa/work/vendor/epics/install/3.14.12.6/base
 
 # Use POSIX thread priority scheduling (YES or NO)
 USE_POSIX_THREAD_PRIORITY_SCHEDULING = YES
