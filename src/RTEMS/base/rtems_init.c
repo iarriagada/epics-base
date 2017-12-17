@@ -512,6 +512,9 @@ Init (rtems_task_argument ignored)
     rtems_task_priority newpri;
     rtems_status_code   sc;
     rtems_time_of_day   now;
+    struct timespec     timespecNow;
+    epicsTimeStamp      ets;
+    char                buff[40];
 
     /*
      * Explain why we're here
@@ -620,6 +623,12 @@ Init (rtems_task_argument ignored)
     }
     tzset();
     osdTimeRegister();
+
+	/*mrippa test timestamp after tzset()*/
+    osdNTPGet(&timespecNow);
+    epicsTimeFromTimespec(&ets, &timespecNow);
+    epicsTimeToStrftime(buff, sizeof(buff), "%Y-%m-%d %H:%M:%S.%09f", &ets);
+    printf("mrippa Notice: timestamp=%s\n", buff);
 
     /*
      * Run the EPICS startup script

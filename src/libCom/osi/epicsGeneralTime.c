@@ -32,7 +32,7 @@
 #include "epicsGeneralTime.h"
 
 /* Change 'undef' to 'define' to turn on debug statements: */
-#undef DEBUG_GENERAL_TIME
+#define DEBUG_GENERAL_TIME
 
 #ifdef DEBUG_GENERAL_TIME
     int generalTimeDebug = 10;
