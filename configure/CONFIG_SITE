@@ -183,15 +183,14 @@ COMPAT_313=NO
 #  Installation directory
 # If you don't want to install into $(TOP) dir then
 # define INSTALL_LOCATION here
-# UNDEFINED NOW... Set for testing into TOP
-INSTALL_LOCATION=/home/iarriagada/work/test/epics/R3.14.12.6/base
+INSTALL_LOCATION=/gem_sw/epics/R3.14.12.7/base
 
 # Use POSIX thread priority scheduling (YES or NO)
 USE_POSIX_THREAD_PRIORITY_SCHEDULING = YES
 
 #  Site version number, if set will append '-' and this string to the
 #  EPICS version number string that is reported by many tools
-EPICS_SITE_VERSION = GS314
+EPICS_SITE_VERSION =
 
 # For GNU compiler, use pipes rather than temporary files for communication 
 # between the various stages of compilation.
