@@ -70,6 +70,8 @@
 # EPICS_TS_NTP_INET
 #	NTP time server ip address for VxWorks and RTEMS.
 #	IOC will use its boot host if this is not set.
+
+EPICS_TIMEZONE=UTC::0::
 EPICS_TS_NTP_INET=
 
 # IOC Shell:

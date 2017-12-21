@@ -17,7 +17,7 @@ buildInstall: $(INSTALL_DATAS)
 
 $(INSTALL_DATA)/%.sav: ../%.sav
 	@echo "Install autosav file $@ to data/autosave for $< ..."
-	@$(INSTALL) -d -m 555 $< $(INSTALL_DATA)/$(AUTOSAVE_DIR)
+	@$(INSTALL) -d -m 775 $< $(INSTALL_DATA)/$(AUTOSAVE_DIR)
 
 $(INSTALL_DATA)/%.proc: ../%.proc
 	@echo "Install PROC_File $@ to data for $< ..."
