@@ -6,7 +6,7 @@
 # Where to find RTEMS
 #
 # APS:
-RTEMS_VERSION = 4.10.2
+RTEMS_VERSION = 4.10
 RTEMS_BASE = /gem_base/targetOS/RTEMS/rtems-$(RTEMS_VERSION)
 
 # Cross-compile toolchain in $(RTEMS_TOOLS)/bin
