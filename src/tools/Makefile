@@ -40,6 +40,7 @@ PERL_MODULES += EpicsHostArch.pl
 PERL_SCRIPTS += assembleSnippets.pl
 PERL_SCRIPTS += convertRelease.pl
 PERL_SCRIPTS += cvsclean.pl
+PERL_SCRIPTS += convertGemRelease.pl 
 PERL_SCRIPTS += dos2unix.pl
 PERL_SCRIPTS += epicsProve.pl
 PERL_SCRIPTS += expandVars.pl

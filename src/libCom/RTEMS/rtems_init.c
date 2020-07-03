@@ -432,6 +432,22 @@ static void nfsMountCallFunc(const iocshArgBuf *args)
 }
 #endif
 
+void zoneset(const char *zone)
+{
+    if(zone)
+        setenv("TZ", zone, 1);
+    else
+        unsetenv("TZ");
+    tzset();
+}
+
+static const iocshArg zonesetArg0 = {"one string", iocshArgString};
+static const iocshArg * const zonesetArgs[1] = {&zonesetArg0};
+static const iocshFuncDef zonesetFuncDef = {"zoneset",1,zonesetArgs};
+static void zonesetCallFunc(const iocshArgBuf *args)
+{
+    zoneset(args[0].sval);
+}
 /*
  * Register RTEMS-specific commands
  */
@@ -442,6 +458,7 @@ static void iocshRegisterRTEMS (void)
 #ifndef OMIT_NFS_SUPPORT
     iocshRegister(&nfsMountFuncDef, nfsMountCallFunc);
 #endif
+    iocshRegister(&zonesetFuncDef, &zonesetCallFunc);
 }
 
 /*
@@ -581,11 +598,25 @@ Init (rtems_task_argument ignored)
             printf ("***** Can't set time: %s\n", rtems_status_text (sc));
     }
     if (getenv("TZ") == NULL) {
-        const char *tzp = envGetConfigParamPtr(&EPICS_TZ);
-        if (!tzp || *tzp)
-            printf("Warning: No timezone information, times will be displayed in UTC.\n");
-        else
-            epicsEnvSet("TZ", tzp);
+        const char *tzp = envGetConfigParamPtr(&EPICS_TIMEZONE);
+        if (tzp == NULL) {
+            printf("Warning -- no timezone information available -- times will be displayed as GMT.\n");
+        }
+        else {
+            char tz[10];
+            int minWest, toDst = 0, fromDst = 0;
+            if(sscanf(tzp, "%9[^:]::%d:%d:%d", tz, &minWest, &toDst, &fromDst) < 2) {
+                printf("Warning: EPICS_TIMEZONE (%s) unrecognizable -- times will be displayed as GMT.\n", tzp);
+            }
+            else {
+                char posixTzBuf[40];
+                char *p = posixTzBuf;
+                p += sprintf(p, "%cST%d:%.2d", tz[0], minWest/60, minWest%60);
+                if (toDst != fromDst)
+                    p += sprintf(p, "%cDT", tz[0]);
+                epicsEnvSet("TZ", posixTzBuf);
+            }
+        }
     }
     tzset();
     osdTimeRegister();
