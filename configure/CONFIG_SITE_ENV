@@ -48,7 +48,7 @@
 #EPICS_TZ = "EST5EDT,M3.2.0/2,M11.1.0/2"
 
 # US Central Standard/Daylight Time:
-EPICS_TZ = "CST6CDT,M3.2.0/2,M11.1.0/2"
+#EPICS_TZ = "CST6CDT,M3.2.0/2,M11.1.0/2"
 
 # US Mountain Standard/Daylight Time:
 #EPICS_TZ = "MST7MDT,M3.2.0/2,M11.1.0/2"
@@ -59,6 +59,7 @@ EPICS_TZ = "CST6CDT,M3.2.0/2,M11.1.0/2"
 # US Hawaiian Standard Time, no DST:
 #EPICS_TZ = "HST10"
 
+EPICS_TZ="CLT4CLST3,M9.1.6/0,M4.1.6/0"
 
 # EPICS_TS_NTP_INET
 #	NTP time server ip address for VxWorks and RTEMS.

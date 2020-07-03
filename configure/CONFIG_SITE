@@ -107,7 +107,7 @@
 # Which target architectures to cross-compile for.
 #  Definitions in configure/os/CONFIG_SITE.<host>.Common
 #  may override this setting.
-CROSS_COMPILER_TARGET_ARCHS=
+CROSS_COMPILER_TARGET_ARCHS = RTEMS-beatnik RTEMS-mvme2307 RTEMS-mvme3100 
 #CROSS_COMPILER_TARGET_ARCHS=vxWorks-ppc32
 
 # If only some of your host architectures can compile the
@@ -161,7 +161,7 @@ USE_POSIX_THREAD_PRIORITY_SCHEDULING = YES
 
 # Site version number, if set will append '-' and this string to the
 #  EPICS version number string that is reported by many tools.
-EPICS_SITE_VERSION =
+EPICS_SITE_VERSION = GS
 
 # For GNU compiler, use pipes rather than temporary files for
 #  communication between the various stages of compilation.
